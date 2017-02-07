@@ -87,11 +87,8 @@
             function addimg(value) {
                 var img = $('<iframe frameborder="0" class="' + value + '"></iframe>');
                 
-                context.invoke("editor.saveRange");
                 context.invoke("editor.restoreRange");
                 context.invoke("editor.focus");
-                //context.invoke("editor.insertText", img[0]);
-                
                 context.invoke("editor.insertNode", img[0]);
             }
         }
