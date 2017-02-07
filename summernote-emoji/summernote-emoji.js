@@ -86,11 +86,18 @@
 
             function addimg(value) {
                 var img = $('<iframe frameborder="0" class="' + value + '"></iframe>');
-                context.invoke("editor.saveRange");
+                //context.invoke("editor.saveRange");
                 //context.invoke("editor.restoreRange");
-                context.invoke("editor.focus");
-                context.invoke("editor.insertNode", img[0]);
+                //context.invoke("editor.focus");
+                //context.invoke("editor.insertNode", img[0]);
                 //context.invoke("editor.insertText", '<iframe frameborder="0" class="' + value + '"></iframe>');
+                
+                var selection = document.getSelection();
+                var cursorPos = selection.anchorOffset;
+                var oldContent = selection.anchorNode.nodeValue;
+                var toInsert = img[0];
+                var newContent = oldContent.substring(0, cursorPos) + toInsert + oldContent.substring(cursorPos);
+                selection.anchorNode.nodeValue = newContent;
             }
         }
     });
