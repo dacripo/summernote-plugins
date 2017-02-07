@@ -94,9 +94,9 @@
                 
                 var selection = document.getSelection();
                 var cursorPos = selection.anchorOffset;
-                var oldContent = selection.anchorNode.nodeValue;
+                var oldContent = selection.anchorNode.innerHTML;
                 var toInsert = img[0];
-                var newContent = oldContent.substring(0, cursorPos) + toInsert /*+ oldContent.substring(cursorPos)*/;
+                var newContent = oldContent.substring(0, cursorPos) + toInsert + oldContent.substring(cursorPos);
                 selection.anchorNode.nodeValue = newContent;
             }
         }
